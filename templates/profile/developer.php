@@ -6,7 +6,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
         rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
         crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="/templates/css/style.css">
   <title>Robotka</title>
 </head>
 <body>
@@ -37,7 +37,7 @@
     <div class="row">
       <div class="col-2">
         <div class="avatar">
-          <img src="../icon/avatar.webp" width="100px">
+          <img src="/templates/icon/avatar.webp" width="100px">
         </div>
       </div>
       <div class="col-3">
