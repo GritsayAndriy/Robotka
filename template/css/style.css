@@ -1,7 +1,39 @@
+body main {
+    font-family: 'Palatino', serif;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.4;
+    font-family: courier, monospace;
+}
+
 /**************************************
  ** - 03 - Navbar Area CSS
  **************************************/
 
-/*.navbar {*/
+.navbar {
+    background-color: #FF5B38;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 0;
+    padding-left: 0;
+}
 
-/*}*/
+.navbar .navbar-brand {
+    font-size: 18px;
+    font-weight: 500;
+    color: #534e4e;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    transition: .5s;
+}
+
+.navbar .navbar-nav .nav-link.active,
+.navbar .navbar-nav .show > .nav-link {
+    color: #e8e5e5;
+}
