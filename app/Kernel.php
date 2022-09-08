@@ -29,7 +29,7 @@ class Kernel
         if (isset($this->routes[$uri][$method])) {
             $controller = new $this->routes[$uri][$method]['controller'];
             $controllerMethod = $this->routes[$uri][$method]['method'];
-            $this->response = $controller->$controllerMethod();
+            $this->response = $controller->$controllerMethod($_POST);
         }
         return $this;
     }

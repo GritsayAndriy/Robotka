@@ -8,8 +8,14 @@ use App\Controllers\AbstractController;
 
 class RegistrationController extends AbstractController
 {
-    public function register(): self
+    public function showRegisterForm(): self
     {
-        return $this->view('');
+        return $this->view('layouts/auth/applicant/registration');
+    }
+
+    public function register(array $data): self
+    {
+
+        return $this->view('layouts/auth/applicant/registration');
     }
 }
