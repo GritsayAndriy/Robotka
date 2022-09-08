@@ -6,7 +6,8 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Helpers/theme_helpers.php"
+            "app/Helpers/theme_helpers.php",
+            "app/Helpers/configs_helpers.php"
         ]
     },
     "authors": [

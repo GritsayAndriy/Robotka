@@ -1,29 +1,13 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Repositories;
 
-use App\Models\User;
-
-class UserRepository implements RepositoryInterface
+class UserRepository extends JsonRepository
 {
-
-    public function findAll()
+    protected $filePath = '';
+    public function __construct()
     {
-        User::
-    }
-
-    public function find()
-    {
-        // TODO: Implement find() method.
-    }
-
-    public function update()
-    {
-        // TODO: Implement update() method.
-    }
-
-    public function delete()
-    {
-        // TODO: Implement delete() method.
+        $this->filePath = config('app', 'user_json_path');
     }
 }
