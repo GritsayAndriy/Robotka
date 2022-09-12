@@ -8,24 +8,32 @@ use App\Models\Model;
 
 abstract class JsonRepository implements RepositoryInterface
 {
+    protected string $modelName;
+
     public function findAll()
     {
         // TODO: Implement findAll() method.
     }
 
-    public function find()
+    public function find(int $id): ?Model
     {
-        // TODO: Implement find() method.
+        $records = json_decode(file_get_contents($this->filePath), true);
+        foreach ($records as $record) {
+            if ($record['id'] == $id) {
+                return $this->modelName::transformToModel($record);
+            }
+        }
+        return null;
     }
 
     public function create(Model $model): ?Model
     {
         $storage = file_get_contents($this->filePath);
         $oldStorage = json_decode($storage, true);
-        $lastRecord = array_pop($oldStorage);
-        if (empty($lastRecord)) {
+        if (is_null($oldStorage)) {
             $model->setId(1);
         } else {
+            $lastRecord = array_pop($oldStorage);
             $oldStorage[] = $lastRecord;
             $model->setId($lastRecord['id'] + 1);
         }

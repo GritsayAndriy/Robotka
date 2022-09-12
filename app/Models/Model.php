@@ -15,4 +15,6 @@ abstract class Model
     }
 
     public abstract function toStorage(): array;
+
+    public abstract static function transformToModel(array $data): Model;
 }

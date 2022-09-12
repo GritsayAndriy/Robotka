@@ -10,7 +10,7 @@ interface RepositoryInterface
 {
     public function findAll();
 
-    public function find();
+    public function find(int $id): ?Model;
 
     public function create(Model $model): ?Model;
 
