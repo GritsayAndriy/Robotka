@@ -18,6 +18,6 @@ class RegistrationController extends AbstractController
     public function register(array $data): self
     {
         (new UserRepository())->create(new User($data));
-        return $this->view('layouts/auth/applicant/registration');
+        return $this->view('layouts/auth/applicant/login');
     }
 }

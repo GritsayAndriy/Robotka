@@ -18,7 +18,7 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-primary px-3">Sign up</button>
+                                <button type="submit" class="btn btn-primary px-3">Login</button>
                             </div>
                         </div>
                     </form>

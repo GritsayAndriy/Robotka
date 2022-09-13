@@ -14,6 +14,11 @@ abstract class Model
         return $this;
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
     public abstract function toStorage(): array;
 
     public abstract static function transformToModel(array $data): Model;

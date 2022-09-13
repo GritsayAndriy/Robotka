@@ -22,6 +22,36 @@ class User extends Model
         return $this;
     }
 
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    public function setUsername(mixed $username): void
+    {
+        $this->username = $username;
+    }
+
+    public function getUsername(): mixed
+    {
+        return $this->username;
+    }
+
+    public function setEmail(mixed $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function getEmail(): mixed
+    {
+        return $this->email;
+    }
+
+    public function setPassword(mixed $password): void
+    {
+        $this->password = $password;
+    }
+
     public function getPassword(): string
     {
         return $this->password;

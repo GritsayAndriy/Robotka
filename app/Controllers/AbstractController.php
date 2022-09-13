@@ -18,4 +18,10 @@ class AbstractController
     {
         include($this->viewPath);
     }
+
+    public function redirect(string $path)
+    {
+        header('Location: ' . $path);
+        die();
+    }
 }
