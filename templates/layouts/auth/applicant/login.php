@@ -16,6 +16,13 @@
                                 <input type="password" class="form-control" id="passwordInput" name="password">
                             </div>
                         </div>
+                        <?php if (isset($validation)):?>
+                        <div class="row mb-3">
+                            <div class="alert alert-danger">
+                                <?= $validation['error']?>
+                            </div>
+                        </div>
+                        <?php endif;?>
                         <div class="row justify-content-center">
                             <div class="col-auto">
                                 <button type="submit" class="btn btn-primary px-3">Login</button>

@@ -17,7 +17,15 @@ class RegistrationController extends AbstractController
 
     public function register(array $data): self
     {
-        (new UserRepository())->create(new User($data));
-        return $this->view('layouts/auth/applicant/login');
+        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+        try {
+            (new UserRepository())->create(new User($data));
+        }
+        catch(\PDOException $exception){
+            $validation = ['error' => 'Failed registration!'];
+            return $this->view('layouts/auth/applicant/registration', compact('validation'));
+        }
+        $this->redirect('/login');
+        return $this;
     }
 }

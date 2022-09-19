@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 class User extends Model
@@ -8,15 +10,17 @@ class User extends Model
     protected $email;
     protected $password;
     protected $birthday;
+    protected $createdAt;
+    protected array $fillable = ['username', 'email', 'password', 'birthday', 'created_at'];
 
     public function __construct(array $data)
     {
-        $this->username = $data['username']?? '';
+        $this->username = $data['username'] ?? '';
         $this->email = $data['email'];
         $this->password = $data['password'];
     }
 
-    public function setBirthday(? \DateTime $data)
+    public function setBirthday(?\DateTime $data): self
     {
         $this->birthday = $data;
         return $this;
@@ -27,9 +31,10 @@ class User extends Model
         return $this->birthday;
     }
 
-    public function setUsername(mixed $username): void
+    public function setUsername(mixed $username): self
     {
         $this->username = $username;
+        return $this;
     }
 
     public function getUsername(): mixed
@@ -37,9 +42,10 @@ class User extends Model
         return $this->username;
     }
 
-    public function setEmail(mixed $email): void
+    public function setEmail(mixed $email): self
     {
         $this->email = $email;
+        return $this;
     }
 
     public function getEmail(): mixed
@@ -47,9 +53,10 @@ class User extends Model
         return $this->email;
     }
 
-    public function setPassword(mixed $password): void
+    public function setPassword(mixed $password): self
     {
         $this->password = $password;
+        return $this;
     }
 
     public function getPassword(): string
@@ -57,13 +64,25 @@ class User extends Model
         return $this->password;
     }
 
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt($createdAt): self
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
     public function toStorage(): array
     {
         return [
-            'id' => $this->id,
-            'username' => $this->username,
+            'username' => $this->username ?? null,
             'email' => $this->email,
             'password' => $this->password,
+            'birthday' => $this->birthday ?? null,
+            'created_at' => $this->createdAt ?? null,
         ];
     }
 
@@ -71,6 +90,8 @@ class User extends Model
     {
         return (new User($data))
             ->setId($data['id'])
-            ->setBirthday(isset($data['birthday']) ? (new \DateTime())->setTimestamp($data['birthday']) : null);
+            ->setBirthday(isset($data['birthday']) ?
+                (new \DateTime())->setTimestamp(strtotime($data['birthday'])) : null)
+            ->setCreatedAt($data['created_at']);
     }
 }

@@ -18,11 +18,12 @@ class LoginController extends AbstractController
     public function login(array $data)
     {
         $user = (new UserRepository())->findByEmail($data['email']);
-        if ($user->getPassword() == $data['password']) {
+        if (password_verify($data['password'], $user->getPassword())) {
             $this->rememberUser($user);
             $this->redirect('/dashboard');
         }
-        return $this->view('layouts/auth/applicant/login');
+        $validation['error'] = 'Failed login';
+        return $this->view('layouts/auth/applicant/login', compact('validation'));
     }
 
     private function rememberUser(User $user)

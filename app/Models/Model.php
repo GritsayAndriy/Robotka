@@ -7,6 +7,7 @@ namespace App\Models;
 abstract class Model
 {
     protected int $id;
+    protected array $fillable;
 
     public function setId(int $id): self
     {
@@ -22,4 +23,9 @@ abstract class Model
     public abstract function toStorage(): array;
 
     public abstract static function transformToModel(array $data): Model;
+
+    public function getFillable(): array
+    {
+        return $this->fillable;
+    }
 }
