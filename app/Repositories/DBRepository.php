@@ -22,7 +22,16 @@ abstract class DBRepository implements RepositoryInterface
 
     public function findAll()
     {
-        return;
+        $statement = $this->dbConnection
+            ->prepare("SELECT * FROM $this->tableName");
+        $statement->execute();
+
+        $records = $statement->fetchAll();
+        $collection = [];
+        foreach ($records as $record) {
+            $collection[] = $this->modelName::transformToModel($record);
+        }
+        return $collection;
     }
 
     public function find(int $id): ?Model
@@ -49,7 +58,7 @@ abstract class DBRepository implements RepositoryInterface
         $values = array_values($model->toStorage());
 
         for ($i = 1; $i <= $countOfColumns; $i++) {
-            if ($i === $countOfColumns){
+            if ($i === $countOfColumns) {
                 $marksValue .= '?';
                 continue;
             }
@@ -57,7 +66,8 @@ abstract class DBRepository implements RepositoryInterface
         }
 
         $statement = $this->dbConnection->prepare(
-            "INSERT INTO $this->tableName ($columns) VALUES ($marksValue)");
+            "INSERT INTO $this->tableName ($columns) VALUES ($marksValue)"
+        );
 
         $statement->execute($values);
 

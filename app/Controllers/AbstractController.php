@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\DI\Container;
+
 class AbstractController
 {
     private ?string $viewPath;
@@ -28,5 +30,10 @@ class AbstractController
     {
         header('Location: ' . $path);
         die();
+    }
+
+    public function getContainer(): Container
+    {
+        return Container::getInstance();
     }
 }

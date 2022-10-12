@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\DI;
 
+use App\Repositories\RepositoryInterface;
+use App\Repositories\VacancyRepository;
 use App\Services\DB;
 
 class Container
@@ -22,5 +24,10 @@ class Container
     public function getDB()
     {
         return new DB();
+    }
+
+    public function getVacancyRepository(): RepositoryInterface
+    {
+        return new VacancyRepository();
     }
 }
