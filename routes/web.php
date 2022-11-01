@@ -1,10 +1,10 @@
 <?php
 
 use App\Controllers\Applicant\Auth\LoginController;
-use App\Controllers\Applicant\Auth\LogoutController;
 use App\Controllers\Applicant\Auth\RegistrationController;
 use App\Controllers\Applicant\DashboardController;
 use App\Controllers\HomeController;
+use App\Controllers\LogoutController;
 
 return [
     '/' => [
@@ -39,10 +39,4 @@ return [
             'method' => 'logout',
         ],
     ],
-    '/dashboard' => [
-        'get' => [
-            'controller' => DashboardController::class,
-            'method' => 'index',
-        ]
-    ]
 ];

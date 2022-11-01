@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Controllers\Applicant\Auth;
-
-use App\Controllers\AbstractController;
+namespace App\Controllers;
 
 class LogoutController extends AbstractController
 {

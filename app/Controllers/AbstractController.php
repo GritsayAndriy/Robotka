@@ -11,6 +11,13 @@ class AbstractController
     private ?string $viewPath;
     private ?array $param = [];
 
+    public $container;
+
+    public function __construct()
+    {
+        $this->container = Container::getInstance();
+    }
+
     public function view(string $name, array $param = []): self
     {
         $this->viewPath = $_SERVER['DOCUMENT_ROOT'] . '/templates/' . $name . '.php';

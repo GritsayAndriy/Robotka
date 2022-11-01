@@ -6,7 +6,7 @@ namespace App\Models;
 
 abstract class Model
 {
-    protected int $id;
+    protected ?int $id;
     protected array $fillable;
 
     public function setId(int $id): self
@@ -18,6 +18,17 @@ abstract class Model
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt($createdAt): self
+    {
+        $this->createdAt = $createdAt;
+        return $this;
     }
 
     public abstract function toStorage(): array;

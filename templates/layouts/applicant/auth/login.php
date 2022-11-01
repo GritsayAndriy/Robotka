@@ -3,6 +3,7 @@
         <div class="container">
             <div class="row my-5 justify-content-center">
                 <div class="col-7">
+                    <h3 class="text-center">Login</h3>
                     <form class="card p-5" method="post">
                         <div class="row mb-3">
                             <label for="emailInput" class="col-sm-3 col-form-label">Email</label>

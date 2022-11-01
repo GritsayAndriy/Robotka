@@ -9,12 +9,31 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $connection = Container::getInstance()->getDB()->getConnection();
 
-$connection->exec("CREATE TABLE users (
+$connection->exec("CREATE TABLE applicants (
     id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255),
     birthday DATE,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    country VARCHAR(255),
+    city VARCHAR(255),
+    phone VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)");
+
+$connection->exec("CREATE TABLE employers (
+    id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255),
+    birthday DATE,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    country VARCHAR(255),
+    city VARCHAR(255),
+    phone VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )");
 
@@ -39,7 +58,7 @@ $connection->exec("CREATE TABLE summaries (
     user_id INT(4) UNSIGNED,
     position VARCHAR(255) NOT NULL,
     description MEDIUMTEXT,
-    password VARCHAR(255),
+    skills TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )");
@@ -55,9 +74,25 @@ $connection->exec("CREATE TABLE educations (
 
 $connection->exec('CREATE TABLE experience (
     id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    summary_id INT(4) UNSIGNED,
+    summary_id INT(4) UNSIGNED NOT NULL,
     position VARCHAR(255) NOT NULL,
     company VARCHAR(255) NOT NULL,
     started_date TIMESTAMP NOT NULL,
     finished_date TIMESTAMP NOT NULL
+)');
+
+$connection->exec('CREATE TABLE categories (
+    id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)');
+
+$connection->exec('CREATE TABLE categories_vacancies (
+    id INT(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    vacancy_id INT(4) UNSIGNED NOT NULL,
+    category_id INT(4) UNSIGNED NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )');

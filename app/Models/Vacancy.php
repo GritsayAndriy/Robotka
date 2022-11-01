@@ -6,7 +6,7 @@ namespace App\Models;
 
 class Vacancy extends Model
 {
-    protected int $id;
+    protected ?int $id;
     protected string $name;
     protected string $description;
     protected ?int $company_id;
@@ -16,11 +16,17 @@ class Vacancy extends Model
 
     public function __construct(array $data)
     {
+        $this->id = $data['id']?? null;
         $this->name = $data['name']?? '';
         $this->description = $data['description']?? '';
         $this->company_id = $data['company_id']?? null;
         $this->created_at = new \DateTime($data['created_at']?? 'now');
         $this->updated_at = new \DateTime($data['updated_at']?? 'now');
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     public function getName(): string
@@ -61,7 +67,7 @@ class Vacancy extends Model
         return $this->created_at;
     }
 
-    public function setCreatedAt(\DateTime $created_at): self
+    public function setCreatedAt($created_at): self
     {
         $this->created_at = $created_at;
         return $this;

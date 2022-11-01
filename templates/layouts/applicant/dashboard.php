@@ -1,4 +1,4 @@
-<?php theme_header(); ?>
+<?php theme_header('header-applicant'); ?>
 <main>
     <div class="container">
         <div class="heading my-5">
@@ -12,90 +12,90 @@
             </div>
             <div class="col-3">
                 <div class="h2">
-                    Hrytsai Andrii
+                    <?= $authUser->getFirstName() . ' '. $authUser->getLastName()?>
                 </div>
-                <div>Country: Ukraine</div>
-                <div>City: Kyiv</div>
-                <div>Phone: +38(011) 111 1111</div>
-                <div>Email: hrytsai@gmail.com</div>
-                <div>DOB: 21.07.1996</div>
+                <div>Country: <?= $authUser->getCountry()?></div>
+                <div>City: <?= $authUser->getCity()?></div>
+                <div>Phone: <?= $authUser->getCity()?></div>
+                <div>Email: <?= $authUser->getEmail()?></div>
+                <div>DOB: <?= $authUser->getBirthday()?></div>
             </div>
-            <div class="col">
-                <h2>Middle Back-end PHP</h2>
-            </div>
+<!--            <div class="col">-->
+<!--                <h2>Middle Back-end PHP</h2>-->
+<!--            </div>-->
         </div>
-        <div class="row my-3">
-            <div class="col">
-                <div class="h3">
-                    Skills
-                </div>
-                <div>
-                    <p>PHP, Java, SQL, HTML, CSS, SASS, JavaScript, JSON, XML, WordPress(plugins: Woocommerce, ACF,
-                        CF7),
-                        Joomla
-                        Laravel ^8, Bootstrap ^4, jQuery.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row my-3">
-            <div class="col">
-                <div class="h3">
-                    Summery
-                </div>
-                <div>
-                    <p>It is a long established fact that a reader will be distracted by the readable
-                        content of a page when looking at its layout. The point of using Lorem Ipsum is
-                        that it has a more-or-less normal distribution of letters, as opposed to using
-                        'Content here, content here', making it look like readable English.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row my-3">
-            <div class="col">
-                <div class="h3">
-                    Experience
-                </div>
-                <div>
-                    <ul>
-                        <li>
-                            <span>21.07.2017 - 30.09.2022</span>
-                            <b class="h5">Position developer</b>
-                            <p>It is a long established fact that a reader will be distracted by the readable
-                                content of a page when looking at its layout. The point of using Lorem Ipsum is</p>
-                        </li>
-                        <li>
-                            <span>21.07.2017 - 30.09.2022</span>
-                            <b class="h5">Position developer</b>
-                            <p>It is a long established fact that a reader will be distracted by the readable
-                                content of a page when looking at its layout. The point of using Lorem Ipsum is</p>
-                        </li>
-                        <li>
-                            <span>21.07.2017 - 30.09.2022</span>
-                            <b class="h5">Position developer</b>
-                            <p>It is a long established fact that a reader will be distracted by the readable
-                                content of a page when looking at its layout. The point of using Lorem Ipsum is</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row my-3">
-            <div class="col">
-                <div class="h3">
-                    Educations
-                </div>
-                <div>
-                    <ul>
-                        <li>
-                            <span>21.07.2017 - 30.09.2022</span>
-                            <b class="h5"> National Aviation University</b>
-                            <p>It is a long established fact that a reader will be distracted by the readable
-                                content of a page when looking at its layout. The point of using Lorem Ipsum is</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!--        <div class="row my-3">-->
+<!--            <div class="col">-->
+<!--                <div class="h3">-->
+<!--                    Skills-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <p>PHP, Java, SQL, HTML, CSS, SASS, JavaScript, JSON, XML, WordPress(plugins: Woocommerce, ACF,-->
+<!--                        CF7),-->
+<!--                        Joomla-->
+<!--                        Laravel ^8, Bootstrap ^4, jQuery.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row my-3">-->
+<!--            <div class="col">-->
+<!--                <div class="h3">-->
+<!--                    Summery-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <p>It is a long established fact that a reader will be distracted by the readable-->
+<!--                        content of a page when looking at its layout. The point of using Lorem Ipsum is-->
+<!--                        that it has a more-or-less normal distribution of letters, as opposed to using-->
+<!--                        'Content here, content here', making it look like readable English.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row my-3">-->
+<!--            <div class="col">-->
+<!--                <div class="h3">-->
+<!--                    Experience-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <span>21.07.2017 - 30.09.2022</span>-->
+<!--                            <b class="h5">Position developer</b>-->
+<!--                            <p>It is a long established fact that a reader will be distracted by the readable-->
+<!--                                content of a page when looking at its layout. The point of using Lorem Ipsum is</p>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <span>21.07.2017 - 30.09.2022</span>-->
+<!--                            <b class="h5">Position developer</b>-->
+<!--                            <p>It is a long established fact that a reader will be distracted by the readable-->
+<!--                                content of a page when looking at its layout. The point of using Lorem Ipsum is</p>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <span>21.07.2017 - 30.09.2022</span>-->
+<!--                            <b class="h5">Position developer</b>-->
+<!--                            <p>It is a long established fact that a reader will be distracted by the readable-->
+<!--                                content of a page when looking at its layout. The point of using Lorem Ipsum is</p>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row my-3">-->
+<!--            <div class="col">-->
+<!--                <div class="h3">-->
+<!--                    Educations-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <span>21.07.2017 - 30.09.2022</span>-->
+<!--                            <b class="h5"> National Aviation University</b>-->
+<!--                            <p>It is a long established fact that a reader will be distracted by the readable-->
+<!--                                content of a page when looking at its layout. The point of using Lorem Ipsum is</p>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </main>
 <?php theme_footer(); ?>

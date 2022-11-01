@@ -85,4 +85,14 @@ abstract class DBRepository implements RepositoryInterface
         // TODO: Implement delete() method.
     }
 
+    public function findByEmail(string $email): ?Model
+    {
+        $statement = $this->dbConnection->prepare("SELECT * FROM $this->tableName WHERE email = ?");
+        $statement->execute([$email]);
+        $result = $statement->fetch();
+        if ($result) {
+            return $this->modelName::transformToModel($result);
+        }
+        return null;
+    }
 }

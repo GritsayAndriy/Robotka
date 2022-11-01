@@ -10,14 +10,36 @@ class User extends Model
     protected $email;
     protected $password;
     protected $birthday;
+    protected $firstName;
+    protected $lastName;
+    protected $country;
+    protected $city;
+    protected $phone;
     protected $createdAt;
-    protected array $fillable = ['username', 'email', 'password', 'birthday', 'created_at'];
+
+    protected array $fillable = [
+        'username',
+        'email',
+        'password',
+        'birthday',
+        'first_name',
+        'last_name',
+        'country',
+        'city',
+        'phone',
+        'created_at'
+    ];
 
     public function __construct(array $data)
     {
         $this->username = $data['username'] ?? '';
         $this->email = $data['email'];
         $this->password = $data['password'];
+        $this->firstName = $data['first_name'] ?? '';
+        $this->lastName = $data['last_name'] ?? '';
+        $this->country = $data['country'] ?? '';
+        $this->city = $data['city'] ?? '';
+        $this->phone = $data['phone'] ?? '';
     }
 
     public function setBirthday(?\DateTime $data): self
@@ -64,14 +86,61 @@ class User extends Model
         return $this->password;
     }
 
-    public function getCreatedAt()
+    public function getFirstName(): mixed
     {
-        return $this->createdAt;
+        return $this->firstName;
     }
 
-    public function setCreatedAt($createdAt): self
+    public function setFirstName(mixed $firstName): self
     {
-        $this->createdAt = $createdAt;
+        $this->firstName = $firstName;
+        return $this;
+    }
+
+    /**
+     * @return mixed|string
+     */
+    public function getLastName(): mixed
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(mixed $lastName): self
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
+
+    public function getCountry(): mixed
+    {
+        return $this->country;
+    }
+
+    public function setCountry(mixed $country): self
+    {
+        $this->country = $country;
+        return $this;
+    }
+
+    public function getCity(): mixed
+    {
+        return $this->city;
+    }
+
+    public function setCity(mixed $city): self
+    {
+        $this->city = $city;
+        return $this;
+    }
+
+    public function getPhone(): mixed
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(mixed $phone): self
+    {
+        $this->phone = $phone;
         return $this;
     }
 
@@ -82,6 +151,11 @@ class User extends Model
             'email' => $this->email,
             'password' => $this->password,
             'birthday' => $this->birthday ?? null,
+            'first_name' => $this->firstName ?? null,
+            'last_name' => $this->lastName ?? null,
+            'country' => $this->country ?? null,
+            'city' => $this->city ?? null,
+            'phone' => $this->phone ?? null,
             'created_at' => $this->createdAt ?? null,
         ];
     }
@@ -90,8 +164,15 @@ class User extends Model
     {
         return (new User($data))
             ->setId($data['id'])
-            ->setBirthday(isset($data['birthday']) ?
-                (new \DateTime())->setTimestamp(strtotime($data['birthday'])) : null)
+            ->setBirthday(
+                isset($data['birthday']) ?
+                    (new \DateTime())->setTimestamp(strtotime($data['birthday'])) : null
+            )
+            ->setFirstName($data['first_name'])
+            ->setLastName($data['last_name'])
+            ->setCountry($data['country'])
+            ->setCity($data['city'])
+            ->setPhone($data['phone'])
             ->setCreatedAt($data['created_at']);
     }
 }

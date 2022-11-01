@@ -16,6 +16,8 @@ class Kernel
         $this->routes = array_merge(
             include(__DIR__ . '/../routes/api.php'),
             include(__DIR__ . '/../routes/web.php'),
+            include(__DIR__ . '/../routes/web/employer.php'),
+            include(__DIR__ . '/../routes/web/applicant.php'),
         );
 
         return $this;
