@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Repositories\VacancyRepository;
+
 class HomeController extends AbstractController
 {
     public function home()
     {
-        return $this->view('layouts/home');
+        $vacancies = $this->getContainer()
+            ->getVacancyRepository()
+            ->findAll();
+        return $this->view('layouts/home', compact('vacancies'));
     }
 
     public function index(): self

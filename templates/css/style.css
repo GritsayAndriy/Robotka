@@ -37,3 +37,19 @@ body main {
 .navbar .navbar-nav .show > .nav-link {
     color: #e8e5e5;
 }
+
+.navbar.second-navbar {
+    background-color: rgba(219, 219, 219, 0.18);
+}
+
+.navbar.second-navbar .navbar-nav .nav-item .nav-link {
+    font-size: 18px;
+    font-weight: 500;
+    color: #737373;
+    transition: .5s;
+}
+
+.navbar.second-navbar .navbar-nav .nav-link.active,
+.navbar.second-navbar .navbar-nav .show > .nav-link {
+    color: #000000;
+}
